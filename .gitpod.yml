@@ -4,3 +4,7 @@ image:
 tasks:
   - init: ionic start truckroute
     command: 'ionic serve'
+
+vscode:
+  extensions:
+    - Mikael.Angular-BeastCode@10.0.3:RJ2bMuvUpAuD63D5osKHMg==

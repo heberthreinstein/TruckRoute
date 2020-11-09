@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "truckerroutes": {
+      "hosting": {
+        "app": [
+          "truckerroutes"
+        ]
+      }
+    }
+  }
+}
