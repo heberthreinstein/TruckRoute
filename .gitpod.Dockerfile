@@ -6,4 +6,4 @@ FROM gitpod/workspace-full
 #
 # More information: https://www.gitpod.io/docs/config-docker/
 
-RUN npm install ionic
+RUN npm install -g @ionic/cli
