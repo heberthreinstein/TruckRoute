@@ -1,13 +1,6 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-<div *ngIf="auth.user$ | async; then authenticated else guest">
-        <!-- template will replace this div -->
-</div>
+<ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+</ion-buttons>
 
 <!-- User NOT logged in -->
 <ng-template #guest>
@@ -30,4 +23,11 @@
         <button (click)="auth.signOut()">Logout</button>
     </div>
 </ng-template>
+
+
+<ion-content>
+<div *ngIf="auth.user$ | async; then authenticated else guest">
+        <!-- template will replace this div -->
+</div>
+
 </ion-content>

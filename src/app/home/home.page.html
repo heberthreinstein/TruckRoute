@@ -3,6 +3,9 @@
 		<ion-title>
 			Blank
 		</ion-title>
+        <div (click)="goToProfile()" *ngIf="auth.user$ | async">
+            <ion-img [src]="user.photoURL"></ion-img>
+        </div>
 	</ion-toolbar>
 </ion-header>
 <ion-content>
