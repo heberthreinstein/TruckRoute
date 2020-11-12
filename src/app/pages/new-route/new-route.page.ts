@@ -9,6 +9,15 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 export class NewRoutePage implements OnInit {
 
   map: google.maps.Map;
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer();
+  geocoder = new google.maps.Geocoder();
+
+  
+      startPoint
+      waypoints =  []
+      destination
+  
 
   markers: google.maps.Marker[] = [];
 
@@ -26,8 +35,33 @@ export class NewRoutePage implements OnInit {
             disableDefaultUI: true
         });
         this.map.addListener("click", (mapsMouseEvent) => {
-            console.log(mapsMouseEvent.latLng);
+            if (!this.startPoint) {
+                this.startPoint = mapsMouseEvent.latLng.toString();
+            } else {
+                this.waypoints.push({location: mapsMouseEvent.latLng.toString(), stopover: false});
+            }
+            this.calcRoute()
         });
+    }
+
+    calcRoute() {
+    
+    const request = {
+        travelMode: google.maps.TravelMode.DRIVING,
+        origin: this.startPoint,
+        destination: this.destination,
+        waypoints: this.waypoints
+        }
+
+    console.log(request)
+    this.directionsService.route(request, function(result, status) {
+        if (status == 'OK') {
+        this.directionsRenderer.setDirections(result);
+        } else {
+            window.alert("Directions request failed due to " + status);
+        }
+    });
+    this.directionsRenderer.setMap(this.map);
     }
 
     setMapCenter(position){
@@ -35,12 +69,15 @@ export class NewRoutePage implements OnInit {
         this.map.setZoom(8);
     }
     
-    getEstablishmentAddress(place) {
-
+    getEstablishmentAddress(place ) {
     
     if (place.length == 0) {
       return;
     }
+
+    
+        this.destination = place.geometry.location.toString()
+
 
     // Clear out the old markers.
     this.markers.forEach((marker) => {
