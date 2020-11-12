@@ -1,7 +1,15 @@
-<ion-buttons slot="start">
-    <ion-back-button defaultHref="user-profile"></ion-back-button>
-</ion-buttons>
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user-profile"></ion-back-button>
+  </ion-buttons>
+    <ion-title>Create New Route</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-
+    <div id="map"></div>
+    <br>
+    <h2>Destination:</h2>
+    <app-place-search (setAddress)="getEstablishmentAddress($event)" adressType="establishment"></app-place-search>
 </ion-content>

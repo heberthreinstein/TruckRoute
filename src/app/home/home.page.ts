@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +11,16 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomePage {
 
-  constructor(private router: Router, private auth: AuthService) {}
+  user: Observable<User>;
+  constructor(private router: Router, private auth: AuthService) {
+          this.user = auth.user$;
+  }
 
 
   newRoute(){
-      this.router.navigate(['new-route'])
+      this.router.navigate(['new-route']);
   }
   goToProfile(){
-      this.router.navigate(['user-profile'])
+      this.router.navigate(['user-profile']);
   }
 }

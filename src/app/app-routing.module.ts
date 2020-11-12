@@ -13,13 +13,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'user-profile',
+    loadChildren: () => import('./pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+  {
     path: 'new-route',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/new-route/new-route.module').then( m => m.NewRoutePageModule)
-  },
-  {
-    path: 'user-profile',
-    loadChildren: () => import('./pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
   },
 ];
 
