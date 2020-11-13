@@ -1,9 +1,9 @@
 export interface Route {
     locationID: string;
     information?: string;
-    points?: Array<google.maps.LatLng>;
+    route;
     createdBy: string;
-    createdAt: Date;
+    createdAt: number;
     goodPoints: number;
     badPoints: number;
     truckLenght: number; // Meters

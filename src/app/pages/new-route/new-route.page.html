@@ -12,4 +12,61 @@
     <br>
     <h2>Destination:</h2>
     <app-place-search (setAddress)="getEstablishmentAddress($event)" adressType="establishment"></app-place-search>
+    <ion-text color="primary">
+        <h3>After selection a destination click on the map to set a starting point</h3>
+        <h3>Then you can drag the route to create waypoints</h3>
+    </ion-text>
+    <form action="save()">
+    <ion-item>
+        <ion-label position='floating'>Extra Information</ion-label>
+        <ion-textarea rows="5" [(ngModel)]="information" name="information" placeholder="Describe here any details that are important for the driver to know how to get to his destination safe"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <ion-label position='floating'>Maximum Lenght</ion-label>
+        <ion-select required [(ngModel)]="truckLenght" placeholder="Select Maximum Lenght for this route" name="truckLenght">
+            <ion-select-option value=12>12ft</ion-select-option>
+            <ion-select-option value=16>16ft</ion-select-option>
+            <ion-select-option value=22>22ft</ion-select-option>
+            <ion-select-option value=26>26ft</ion-select-option>
+            <ion-select-option value=28>28ft Trailer</ion-select-option>
+            <ion-select-option value=32>32ft Trailer</ion-select-option>
+            <ion-select-option value=34>34ft Trailer</ion-select-option>
+            <ion-select-option value=36>36ft Trailer</ion-select-option>
+            <ion-select-option value=40>40ft Trailer</ion-select-option>
+            <ion-select-option value=45>45ft Trailer</ion-select-option>
+            <ion-select-option value=48>48ft Trailer</ion-select-option>
+            <ion-select-option value=53>53ft Trailer</ion-select-option>
+            <ion-select-option value=57>57ft Trailer</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label position='floating'>Maximum Height</ion-label>
+        <ion-select required [(ngModel)]="truckHeight" placeholder="Select Maximum Lenght for this route" name="truckHeight">
+            <ion-select-option value=12.06>12ft 6 inches</ion-select-option>
+            <ion-select-option value=12.07>12ft 7 inches</ion-select-option>
+            <ion-select-option value=12.08>12ft 8 inches</ion-select-option>
+            <ion-select-option value=12.09>12ft 9 inches</ion-select-option>
+            <ion-select-option value=12.10>12ft 10 inches</ion-select-option>
+            <ion-select-option value=12.11>12ft 11 inches</ion-select-option>
+            <ion-select-option value=12.12>12ft 12 inches</ion-select-option>
+            <ion-select-option value=13>13ft</ion-select-option>
+            <ion-select-option value=13.01>13ft 1 inches</ion-select-option>
+            <ion-select-option value=13.02>13ft 2 inches</ion-select-option>
+            <ion-select-option value=13.03>13ft 3 inches</ion-select-option>
+            <ion-select-option value=13.04>13ft 4 inches</ion-select-option>
+            <ion-select-option value=13.05>13ft 5 inches</ion-select-option>
+            <ion-select-option value=13.06>13ft 6 inches</ion-select-option>
+            <ion-select-option value=13.07>13ft 7 inches</ion-select-option>
+            <ion-select-option value=13.08>13ft 8 inches</ion-select-option>
+            <ion-select-option value=13.09>13ft 9 inches</ion-select-option>
+            <ion-select-option value=13.10>13ft 10 inches</ion-select-option>
+            <ion-select-option value=13.11>13ft 11 inches</ion-select-option>
+            <ion-select-option value=13.12>13ft 12 inches</ion-select-option>
+            <ion-select-option value=14>14ft</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-button (click)='save()' type="submit" expand="block">
+        Salvar
+    </ion-button>
+    </form>
 </ion-content>
