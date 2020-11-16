@@ -24,6 +24,7 @@ export class NewRoutePage implements OnInit {
     truckHeight: number;
     truckLenght: number;
     userId: string;
+    plus_code: any;
 
   constructor(
     private geolocation: Geolocation,
@@ -87,8 +88,8 @@ export class NewRoutePage implements OnInit {
     if (place.length == 0) {
       return;
     }
-
     this.destination = place.place_id;
+    this.plus_code = place.plus_code
 
     this.map.addListener("click", (mapsMouseEvent) => {
       if (!this.startPoint) {
@@ -140,8 +141,9 @@ export class NewRoutePage implements OnInit {
     console.log('save called')  
     this.routeService.save({
       locationID: this.destination,
+      city: this.routeService.getCityFromPlusCode(this.plus_code.compound_code),
       information: this.information,
-      route: this.directionsRenderer.getDirections(),
+      route: JSON.parse(JSON.stringify(this.directionsRenderer.getDirections())),
       createdBy: this.userId,
       createdAt: Date.now(),
       goodPoints: 0,

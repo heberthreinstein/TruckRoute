@@ -1,7 +1,8 @@
 export interface Route {
     locationID: string;
+    city: string,
     information?: string;
-    route;
+    route: any;
     createdBy: string;
     createdAt: number;
     goodPoints: number;

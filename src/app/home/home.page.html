@@ -9,6 +9,13 @@
 	</ion-toolbar>
 </ion-header>
 <ion-content>
+<h2>Where are you going to deliver?</h2>
+    <app-place-search (setAddress)="getEstablishmentAddress($event)" adressType="establishment"></app-place-search>
+
+<div *ngFor="let route of routes | async">
+{{route}}
+</div>
+
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
 	<ion-fab-button (click)="newRoute()">
 		<ion-icon name="add"></ion-icon>
