@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
 	<ion-toolbar>
 		<ion-title>
-			Blank
+			Trucker Routes
 		</ion-title>
-        <div (click)="goToProfile()" *ngIf="auth.user$ | async">
+        <!-- <div (click)="goToProfile()" *ngIf="user | async">
             <ion-img [src]="user.photoURL"></ion-img>
-        </div>
+        </div> -->
 	</ion-toolbar>
 </ion-header>
 <ion-content>
@@ -13,7 +13,16 @@
     <app-place-search (setAddress)="getEstablishmentAddress($event)" adressType="establishment"></app-place-search>
 
 <div *ngFor="let route of routes | async">
-{{route}}
+<ion-item>
+<ion-text color="primary">
+    <h1>{{route.title}}</h1>
+    <p>{{route.information}}</p>
+</ion-text>
+<ion-button (click)="goToRoute(route.id)" expand="block" shape="round">
+    See route details
+</ion-button>
+</ion-item>
+
 </div>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">

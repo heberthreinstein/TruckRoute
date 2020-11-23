@@ -18,6 +18,10 @@
     </ion-text>
     <form action="save()">
     <ion-item>
+        <ion-label position='floating'>Title</ion-label>
+        <ion-input type="text" placeholder="Coming from I95" [(ngModel)]="title" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
         <ion-label position='floating'>Extra Information</ion-label>
         <ion-textarea rows="5" [(ngModel)]="information" name="information" placeholder="Describe here any details that are important for the driver to know how to get to his destination safe"></ion-textarea>
     </ion-item>

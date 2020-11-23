@@ -13,9 +13,9 @@ import { AlertaService } from '../services/alerta.service';
 })
 export class HomePage {
 
-  user: Observable<User>;
+  user: Observable<User>; 
   routes;
-  constructor(private router: Router, private auth: AuthService, private routeService: RouteService, private alert: AlertaService) {
+  constructor(private router: Router, public auth: AuthService, private routeService: RouteService, private alert: AlertaService) {
           this.user = auth.user$;
   }
 
@@ -32,5 +32,8 @@ export class HomePage {
     }
     this.routes = this.routeService.getRoutesByLocationId(place.place_id);
     this.routes.subscribe(res => {if (res) loading.dismiss()})
+  }
+  goToRoute(id: string){
+      this.router.navigateByUrl('/route/' + id);
   }
 }

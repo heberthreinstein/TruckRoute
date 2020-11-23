@@ -14,6 +14,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { PlaceSearchModule } from './modules/place-search/place-search.module';
 import { FormsModule } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NgNavigatorShareService } from 'ng-navigator-share';
+
 
 
 const config = {
@@ -40,6 +42,7 @@ const config = {
     StatusBar,
     SplashScreen,
     Geolocation,
+    NgNavigatorShareService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

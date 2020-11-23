@@ -4,12 +4,16 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-    <h3>Howdy, GUEST</h3>
+    <h3>Hello, Trucker</h3>
     <p>Login to get started...</p>
     
-    <button (click)="auth.googleSignin()">
-        <i class="fa fa-google"></i> Connect Google
-    </button>
+    <ion-button (click)="auth.googleSignin()" expand="block" shape="round">
+        Login with Google
+    </ion-button>
+    <ion-button (click)="auth.facebookSignin()" expand="block" shape="round">
+        Login with Facebook
+    </ion-button>
+
 
 </ng-template>
 
@@ -19,8 +23,7 @@
     <div *ngIf="auth.user$ | async as user">
         <h3>Howdy, {{ user.displayName }}</h3>
         <img  [src]="user.photoURL">
-        <p>UID: {{ user.uid }}</p>
-        <button (click)="auth.signOut()">Logout</button>
+        <ion-button (click)="auth.signOut()" expand="block" shape="round">Logout</ion-button>
     </div>
 </ng-template>
 

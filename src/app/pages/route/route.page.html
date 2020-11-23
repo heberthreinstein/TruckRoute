@@ -1,0 +1,24 @@
+<ion-buttons slot="start">
+    <ion-back-button defaultHref="home"></ion-back-button>
+</ion-buttons>
+    <ion-title *ngIf="(route$ | async) as route" >{{ route.get('destinationName') }}</ion-title>
+
+<ion-content>
+<div id='map'></div>
+<div *ngIf="(route$ | async) as route">
+    <ion-text color="primary">
+        <p>{{ route.get('destinationAddress') }}</p>
+        <h1>{{ route.get('title') }}</h1>
+        <h5>Maximum Height: {{ route.get('truckHeight') }} feet</h5>
+        <h5>Maximum Lenght: {{ route.get('truckLenght') }} feet</h5>
+        <p>{{ route.get('information') }}</p>
+    </ion-text>
+</div>
+
+<ion-button (click)="openGoogleMaps()" expand="block"  shape="round">
+    Open on Google Maps
+</ion-button>
+<u>
+  <strong (click)='share()'>share</strong>
+</u>
+</ion-content>

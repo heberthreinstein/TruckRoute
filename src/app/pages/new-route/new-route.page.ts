@@ -25,6 +25,7 @@ export class NewRoutePage implements OnInit {
     truckLenght: number;
     userId: string;
     plus_code: any;
+    title: string;
 
   constructor(
     private geolocation: Geolocation,
@@ -47,7 +48,6 @@ export class NewRoutePage implements OnInit {
       {
         center: { lat: 40, lng: -100 },
         zoom: 2,
-        disableDefaultUI: true,
       }
     );
     
@@ -141,6 +141,7 @@ export class NewRoutePage implements OnInit {
     console.log('save called')  
     this.routeService.save({
       locationID: this.destination,
+      title: this.title,
       city: this.routeService.getCityFromPlusCode(this.plus_code.compound_code),
       information: this.information,
       route: JSON.parse(JSON.stringify(this.directionsRenderer.getDirections())),
