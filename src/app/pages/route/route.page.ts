@@ -91,14 +91,15 @@ export class RoutePage implements OnInit {
   share() {
     
     if (!this.ngNavigatorShareService.canShare()) {
-      alert(`This service/api is not supported in your Browser`);
+      alert('This service/api is not supported in your Browser' +
+      ' -- You can share the following link: https://truckerroutes.web.app/route/' + this.activeRoute.snapshot.paramMap.get("id"));
       return;
     }
  
     this.ngNavigatorShareService.share({
       title: 'My Awesome app',
       text: 'hey check out my Share button',
-      url: 'https://developers.google.com/web'
+      url: 'truckerroutes.web.app/route/' + this.activeRoute.snapshot.paramMap.get("id")
     }).then( (response) => {
       console.log(response);
     })
