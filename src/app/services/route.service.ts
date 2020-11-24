@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Route } from '../models/route.model';
 import { AlertaService } from './alerta.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,14 @@ import { Observable } from 'rxjs/internal/Observable';
 export class RouteService {
 
   constructor(private afs: AngularFirestore,
-    private alert: AlertaService) { }
+    private alert: AlertaService,
+    private router: Router) { }
 
   async save(route: Route){
       const loading = await this.alert.loading({message: 'Saving'})
       this.afs.collection('routes').add(Object.assign({}, route)).then( (res) => {
           this.alert.toast({message: 'Thank you for helping other drivers'});
+          this.router.navigateByUrl('/route/'+res.id)
           loading.dismiss();
         }).catch(error => alert('error saving route' + error));
     }

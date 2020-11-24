@@ -10,4 +10,6 @@ export interface Route {
     badPoints: number;
     truckLenght: number; // Meters
     truckHeight: number; // Meters
+    destinationName: string;
+    destinationAddress: string;
 }

@@ -15,6 +15,8 @@ import { PlaceSearchModule } from './modules/place-search/place-search.module';
 import { FormsModule } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NgNavigatorShareService } from 'ng-navigator-share';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -37,7 +39,7 @@ const config = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     FormsModule,
-    BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,

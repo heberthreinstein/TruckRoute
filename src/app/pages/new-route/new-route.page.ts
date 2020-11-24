@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { RouteService } from "src/app/services/route.service";
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: "app-new-route",
@@ -14,6 +16,8 @@ export class NewRoutePage implements OnInit {
   startPoint;
   waypoints = [];
   destination;
+  destinationName;
+  destinationAddress;
   information;
   directionsRenderer = new google.maps.DirectionsRenderer({
     draggable: true,
@@ -30,7 +34,8 @@ export class NewRoutePage implements OnInit {
   constructor(
     private geolocation: Geolocation,
     private routeService: RouteService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -88,8 +93,11 @@ export class NewRoutePage implements OnInit {
     if (place.length == 0) {
       return;
     }
+    console.log(place)
     this.destination = place.place_id;
     this.plus_code = place.plus_code
+    this.destinationAddress = place.formatted_address
+    this.destinationName = place.name
 
     this.map.addListener("click", (mapsMouseEvent) => {
       if (!this.startPoint) {
@@ -150,7 +158,11 @@ export class NewRoutePage implements OnInit {
       goodPoints: 0,
       badPoints: 0,
       truckLenght: this.truckLenght,
-      truckHeight: this.truckHeight
+      truckHeight: this.truckHeight,
+      destinationName: this.destinationName,
+      destinationAddress: this.destinationAddress
+      
     });
+    
   }
 }
